@@ -10,6 +10,15 @@ We propose a **two-head reward model**:
 
 During reinforcement learning, we **discard the length head** and only use the preference head. This ensures that the model is optimized purely for content quality, rather than response length.
 
+## Get started
+Package installing:
+```bash
+pip install requirements.txt
+```
+
+
+
+
 ## Loss Function
 
 We adopt a pairwise preference learning objective with an explicit correction for length bias.
