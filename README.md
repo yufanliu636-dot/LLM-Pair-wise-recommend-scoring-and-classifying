@@ -13,7 +13,7 @@ During reinforcement learning, we **discard the length head** and only use the p
 ## Get started
 Package installing:
 ```bash
-> **Note:** Make sure you have installed all dependencies before running these commands.
+##> **Note:** Make sure you have installed all dependencies before running these commands.
 pip install requirements.txt
 ```
 
