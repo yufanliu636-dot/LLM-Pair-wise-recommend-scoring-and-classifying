@@ -17,5 +17,5 @@ training:
   epochs: 3
   lr: 1e-5          
   alpha: 0.001
-  save_dir: "./gemma2_lora_reward-tie"
+  save_dir: "./gemma2_lora_reward"
   clip_grad: true   
