@@ -1,4 +1,4 @@
-# LLM-Pair-wise-data-scoring-and-classifying
+# LLM:Pair-wise-data-Scoring-and-Classifying
 ## Reward Modeling
 
 To mitigate length-based reward hacking in reinforcement learning, we explored common techniques such as reward clipping and length penalty. However, instead of relying solely on these heuristics, we address the problem at its root by removing spurious length signals from the reward.
