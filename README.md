@@ -25,7 +25,7 @@ python train_lora.py --config config.yaml
 ```bash
 python merge_lora.py \
     --base_path gemma-2-2b-it \
-    --lora_path  my \
+    --lora_path  weight_address \
     --save_path meged_gemma-2-2b-it \
     --device cuda:0
 ```
