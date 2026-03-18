@@ -95,8 +95,8 @@ each consisting of a prompt, two candidate responses (answer A / B), and a prefe
 ```bash
 python weight_merge.py \
     --base_path gemma-2-2b-it \
-    --lora_path  weight_address \
-    --save_path "./gemma2_lora_reward" \
+    --lora_path  "./gemma2_lora_reward"  \
+    --save_path "./Trained_gemma-2b-it" \
     --device cuda:0
 ```
 
@@ -115,7 +115,7 @@ This approach eliminates positional bias and ensures fair comparison between ans
 ```bash
 python model_eval.py \
     --csv_path arena_55k.csv \
-    --model_path "./gemma2_lora_reward"
+    --model_path "./Trained_gemma-2b-it"
 ```
 
 
