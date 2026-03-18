@@ -1,13 +1,13 @@
 # config.yaml
 data:
-  csv_path: "test.csv" 
+  csv_path: "your_train.csv" 
   batch_size_train: 8
   batch_size_val: 4
   test_size: 0.05
   random_seed: 42
 
 model:
-  model_path: "/root/autodl-fs/gemma-2-2b-it"
+  model_path: "gemma-2-2b-it"
   max_len: 1024
   lora_r: 16
   lora_alpha: 32
