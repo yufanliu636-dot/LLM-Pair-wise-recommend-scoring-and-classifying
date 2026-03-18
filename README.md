@@ -13,21 +13,13 @@ During reinforcement learning, we **discard the length head** and only use the p
 ## Get started
 Package installing:
 ```bash
+> **Note:** Make sure you have installed all dependencies before running these commands.
 pip install requirements.txt
 ```
 
 ## Run LoRA
 ```bash
 python train_lora.py --config config.yaml
-```
-
-## After LoRA Fine-tuning ,we merge weights:
-```bash
-python merge_lora.py \
-    --base_path gemma-2-2b-it \
-    --lora_path  weight_address \
-    --save_path meged_gemma-2-2b-it \
-    --device cuda:0
 ```
 
 
@@ -97,6 +89,19 @@ each consisting of a prompt, two candidate responses (answer A / B), and a prefe
 - Warmup ratio: 0.1
 - Learning rate: 1e-5 with decay
 
+
+
+## After LoRA,we merge weights:
+```bash
+python weight_merge.py \
+    --base_path gemma-2-2b-it \
+    --lora_path  weight_address \
+    --save_path "./gemma2_lora_reward" \
+    --device cuda:0
+```
+
+
+
 ## Model Evaluation
 
 To ensure **objective and unbiased scoring**, we adopt a position-agnostic evaluation strategy:
@@ -105,6 +110,15 @@ To ensure **objective and unbiased scoring**, we adopt a position-agnostic evalu
 - For each response, we **average the two scores** to produce the final evaluation.  
 
 This approach eliminates positional bias and ensures fair comparison between answers.
+
+## After LoRA,we merge weights:
+```bash
+python model_eval.py \
+    --csv_path arena_55k.csv \
+    --model_path "./gemma2_lora_reward"
+```
+
+
 
 ## Results
 
