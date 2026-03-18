@@ -62,3 +62,47 @@ Our formulation explicitly subtracts a length-dependent term from the reward dif
 making the preference objective invariant to response length.
 
 This encourages the model to focus on **content quality rather than verbosity**.
+
+
+## Training Setup
+
+We fine-tune the Gemma-2-2B model using LoRA on a high-quality dataset of 40K+ pairwise samples,  
+each consisting of a prompt, two candidate responses (answer A / B), and a preference label.
+
+- Model: Gemma-2-2B
+- Method: LoRA fine-tuning
+- Data: 40K+ preference pairs (prompt, answer A, answer B, label)
+- Warmup ratio: 0.1
+- Learning rate: 1e-5 with decay
+
+## Model Evaluation
+
+To ensure **objective and unbiased scoring**, we adopt a position-agnostic evaluation strategy:
+
+- For each prompt, we score the responses in **both orders**: (Prompt + Answer A + Answer B) and (Prompt + Answer B + Answer A).  
+- For each response, we **average the two scores** to produce the final evaluation.  
+
+This approach eliminates positional bias and ensures fair comparison between answers.
+
+## Results
+
+Our approach significantly improves the model's ability to judge pairwise response quality.
+
+- Arena55k accuracy: **53.78% → 88.77%**
+
+This demonstrates a substantial gain in preference modeling performance.
+The results highlight the effectiveness of our training pipeline in improving reward modeling accuracy with minimal parameter updates.
+
+
+## NEXT：Handling "Tie" Cases with Reinforcement Learning
+
+We extend our evaluation to pairwise datasets that include **"tie" labels**,  
+where two responses are considered equally good.
+
+To handle these ambiguous cases, we integrate **reinforcement learning** into the training pipeline:
+
+- The reward model is trained to give precise scores even when responses are tied.  
+- During RLHF, the language model is optimized to **maximize the calibrated reward**, not just win/lose outcomes.
+
+This approach improves the reward model’s robustness and ensures fairer scoring,  
+helping it act as a **competent judge** in pairwise comparisons, including subtle tie scenarios.
