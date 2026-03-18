@@ -16,6 +16,19 @@ Package installing:
 pip install requirements.txt
 ```
 
+## Run LoRA
+```bash
+python train_lora.py --config config.yaml
+```
+
+## After LoRA Fine-tuning ,we merge weights:
+```bash
+python merge_lora.py \
+    --base_path gemma-2-2b-it \
+    --lora_path  my \
+    --save_path meged_gemma-2-2b-it \
+    --device cuda:0
+```
 
 
 
