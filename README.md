@@ -111,7 +111,7 @@ To ensure **objective and unbiased scoring**, we adopt a position-agnostic evalu
 
 This approach eliminates positional bias and ensures fair comparison between answers.
 
-## After LoRA,we merge weights:
+## Now，it's time to see 
 ```bash
 python model_eval.py \
     --csv_path arena_55k.csv \
